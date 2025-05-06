@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocate - Home</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body style="background-color: #f7f9fc;">
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center mx-auto" href="/Home">
+        <!-- Logo Placeholder -->
+        <img src="/images/image.png" alt="MediLocate Logo" class="logo me-3">
+        <span class="display-5 fw-bold text-primary">MediLocate</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/MyAppointments">My Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/About">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=medilocate@gmail.com" target="_blank" class="nav-link">Contact us</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <a href="#" class="btn btn-outline-primary ms-3 dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span id="loggedInUser">User</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/Login" onclick="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center py-5" style="background-color: #cce4f8;">
+    <div class="container">
+      <h1 class="display-4 text-primary fw-bold">Find Your Clinic, Anytime, Anywhere</h1>
+      <p class="lead text-dark">Healthcare at your fingertips. Empowering You with Convenient Healthcare Access.</p>
+      <h2 class="display-6 mt-4 text-primary">Choose Your City</h2>
+      <div class="d-flex justify-content-center mt-5">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <button onclick="window.location.href='/Regina'" class="btn btn-outline-primary btn-lg px-4 py-3 shadow-lg rounded-pill fixed-button-size">
+              <i class="bi bi-geo-alt-fill me-2"></i> Regina
+            </button>
+          </div>
+          <div class="col-md-4">
+            <button onclick="window.location.href='/moose-jaw'" class="btn btn-outline-success btn-lg px-4 py-3 shadow-lg rounded-pill fixed-button-size">
+              <i class="bi bi-geo-alt-fill me-2"></i> Moose Jaw
+            </button>
+          </div>
+          <div class="col-md-4">
+            <button onclick="window.location.href='/saskatoon'" class="btn btn-outline-info btn-lg px-4 py-3 shadow-lg rounded-pill fixed-button-size">
+              <i class="bi bi-geo-alt-fill me-2"></i> Saskatoon
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
+  <!-- Stats Section -->
+  <section class="stats-section py-5" style="background-color: #e3edf7;">
+    <div class="container text-center">
+      <h1 class="display-5 text-primary fw-bold">Taking the Hassle Out of Healthcare</h1>
+      <div class="row mt-5">
+        <div class="col-md-4">
+          <h2 class="text-primary">1 in 5 Canadians</h2>
+          <p class="text-dark">Do not have a family doctor</p>
+        </div>
+        <div class="col-md-4">
+          <h2 class="text-primary">Only 43%</h2>
+          <p class="text-dark">Canadians can see their family doctors the same or next day.</p>
+        </div>
+        <div class="col-md-4">
+          <h2 class="text-primary">25.6 weeks</h2>
+          <p class="text-dark">Of average wait time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description Section -->
+  <section class="description-section text-center py-5" style="background-color: #f7f9fc;">
+    <div class="container">
+      <h2 class="display-5 fw-bold text-primary">Transforming Healthcare Access</h2>
+      <p class="lead mt-4 text-dark">MediLocate is here to revolutionize the way you connect with healthcare. Our platform bridges the gap between patients and clinics, ensuring that you can easily find, book, and manage your appointments without any hassle. Whether you need a specialist or a family doctor, MediLocate empowers you to take control of your healthcare journey with just a few clicks. Say goodbye to long waiting times and frustrating searches, and hello to instant access to the care you need.</p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer bg-white py-4 shadow-sm">
+    <div class="container text-center">
+      <p class="mb-0 text-secondary">&copy; 2024 MediLocate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/dropdown_redirect.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocate - About Us</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center mx-auto" href="/Home">
+        <!-- Logo Placeholder -->
+        <img src="/images/image.png" alt="MediLocate Logo" class="logo me-3">
+        <span class="display-5 fw-bold text-primary">MediLocate</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myAppointments">My Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/About">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=medilocate@gmail.com" target="_blank" class="nav-link">Contact us</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <a href="#" class="btn btn-outline-primary ms-3 dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Placeholder for logged in user -->
+            <span id="loggedInUser">User</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/Login" onclick="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section class="about-section py-5">
+    <div class="container">
+      <h1 class="display-4 text-center fw-bold">About MediLocate</h1>
+      <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+          <div class="card shadow-sm border-0">
+            <div class="card-body">
+              <h2 class="fw-bold text-primary">Who We Are</h2>
+              <p>We are a healthcare-focused technology platform dedicated to making healthcare accessible for everyone. MediLocate connects patients with clinics across Canada, providing a simple way to find, book, and manage medical appointments. Our mission is to ensure that every Canadian has access to timely healthcare without the hassle of long wait times and countless phone calls. Our team is composed of dedicated individuals passionate about healthcare and technology, driven to create the most seamless experience for patients and healthcare providers alike.</p>
+              <h2 class="fw-bold text-primary mt-4">We're Different Than the Rest</h2>
+              <p><strong>Empowering Patients.</strong> We believe that everyone should have control over their healthcare journey. With MediLocate, patients can find the right healthcare provider at the right time, with ease and confidence.</p>
+              <p><strong>Innovative Solutions for a Modern World.</strong> Unlike other systems, MediLocate is built with both patients and clinics in mind. We provide an all-in-one solution to remove barriers between patients and their healthcare needs, ensuring easy access to care for everyone, no matter where they are.</p>
+              <p><strong>We Understand Your Needs.</strong> Our platform has been designed by people who know the challenges of navigating healthcare in Canada. We recognize the frustrations of scheduling, wait times, and accessibility. That's why we've built MediLocate to be the tool that helps you take control of your health and connect with the best healthcare professionals near you.</p>
+              <div class="d-flex justify-content-center mt-4">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=medilocate@gmail.com" target="_blank" class="btn btn-outline-primary">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer bg-light py-4">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2024 MediLocate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function logout() {
+
+      alert("You have been logged out.");
+    }
+  </script>
+</body>
+
+</html>

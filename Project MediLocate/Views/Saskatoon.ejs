@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediLocate - Saskatoon Clinics</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    .carousel-item img {
+      height: 400px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center mx-auto" href="/Home">
+        <!-- Logo Placeholder -->
+        <img src="/images/image.png" alt="MediLocate Logo" class="logo me-3">
+        <span class="display-5 fw-bold text-primary">MediLocate</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="MyAppointments">My Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/About">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="mailto:medilocate@gmail.com" target="_blank" class="nav-link">Contact us</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <a href="#" class="btn btn-outline-primary ms-3 dropdown-toggle" id="userDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Placeholder for logged in user -->
+            <span id="loggedInUser">User</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/Login" onclick="logout()">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+   <!-- Clinics Section -->
+   <section>
+    <h1 class="display-5 text-center my-5">Clinics in Saskatoon</h1>
+    <div class="container">
+      <div id="clinicCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% clinics.forEach((clinic, index) => { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="card shadow">
+                    <img src="<%= clinic.image %>" class="card-img-top" alt="<%= clinic.name %>">
+                    <div class="card-body text-center">
+                      <h5 class="card-title"><%= clinic.name %></h5>
+                      <p class="card-text"><strong>Address:</strong> <%= clinic.address %></p>
+                      <button class="btn btn-primary book-appointment-btn" data-clinic="<%= clinic.name %>">
+                        Book Appointment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#clinicCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#clinicCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book Appointment Modal -->
+  <div class="modal fade" id="bookAppointmentModal" tabindex="-1" aria-labelledby="bookAppointmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="bookAppointmentForm" action="/bookAppointment" method="POST">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookAppointmentModalLabel">Book Your Appointment</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" name="clinicName" id="clinicNameInput" value="">
+            <input type="hidden" name="date" id="appointmentDateInput">
+            <input type="hidden" name="time" id="appointmentTimeInput">
+
+            <!-- Accordion for Dates -->
+            <div class="accordion" id="dateAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingDate">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDate" aria-expanded="true" aria-controls="collapseDate">
+                    Choose a Date
+                  </button>
+                </h2>
+                <div id="collapseDate" class="accordion-collapse collapse show" aria-labelledby="headingDate" data-bs-parent="#dateAccordion">
+                  <div class="accordion-body" id="dateSelection">
+                    <!-- Dates will be dynamically inserted here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion for Time Slots -->
+            <div class="accordion mt-3" id="timeAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTime">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTime" aria-expanded="false" aria-controls="collapseTime">
+                    Choose a Time Slot
+                  </button>
+                </h2>
+                <div id="collapseTime" class="accordion-collapse collapse" aria-labelledby="headingTime" data-bs-parent="#timeAccordion">
+                  <div class="accordion-body" id="timeSlotSelection">
+                    <!-- Time slots will be dynamically inserted here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Universal Error Message Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="errorModalLabel">Error</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="errorModalMessage">
+        <!-- Error message will appear here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- About Healthcare in Regina Section -->
+  <section class="about-healthcare-section text-center py-5">
+    <div class="container">
+      <h2 class="display-5 fw-bold">Healthcare Services in Saskatoon</h2>
+      <p class="lead mt-4">Saskatoon is renowned for its extensive healthcare network, offering a full spectrum of medical services to meet the diverse needs of its residents. From state-of-the-art hospitals to community health clinics, Saskatoon is committed to delivering both primary and specialized care, ensuring a healthy community. Our clinics provide personalized attention to each patient and deliver a seamless healthcare experience.</p>
+      <ul class="list-group list-group-flush my-4">
+        <li class="list-group-item">✅ <strong>Comprehensive Medical Facilities</strong> – Saskatoon offers modern medical centers equipped with the latest technology, providing everything from routine check-ups to advanced medical treatments.</li>
+        <li class="list-group-item">✅ <strong>Specialist Services</strong> – Access leading experts across specialties including pediatric care, cardiology, oncology, and more, all aimed at delivering the best outcomes for patients.</li>
+        <li class="list-group-item">✅ <strong>Preventative Care and Health Programs</strong> – Saskatoon’s clinics provide preventative health programs, community wellness initiatives, and vaccination services to help residents lead healthier lives.</li>
+      </ul>
+      <p class="lead">With a patient-first philosophy, Saskatoon's healthcare providers ensure that everyone receives timely care that is both effective and accessible. Use MediLocate to easily connect with the best clinics in Saskatoon and take charge of your health with just a few clicks!</p>
+    </div>
+  </section>
+  
+
+  <!-- Footer Section -->
+  <footer class="footer bg-light py-4">
+    <div class="container text-center">
+      <p class="mb-0">&copy; 2024 MediLocate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Custom JavaScript -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const clinicNameInput = document.getElementById('clinicNameInput');
+    const dateInput = document.getElementById('appointmentDateInput');
+    const timeInput = document.getElementById('appointmentTimeInput');
+    const bookButtons = document.querySelectorAll('.book-appointment-btn');
+    const dateSelectionDiv = document.getElementById('dateSelection');
+    const timeSlotSelectionDiv = document.getElementById('timeSlotSelection');
+    const bookAppointmentForm = document.getElementById('bookAppointmentForm');
+  
+    // Handle clicking on "Book Appointment" buttons for each clinic
+    bookButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const clinicName = this.getAttribute('data-clinic');
+        clinicNameInput.value = clinicName;
+        // Fetch available dates from the server
+        fetch(`/getAvailability?clinicName=${clinicName}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.dates) {
+              // Populate the date buttons
+              dateSelectionDiv.innerHTML = ''; // Clear existing buttons
+              data.dates.forEach(date => {
+                const dateButton = document.createElement('button');
+                dateButton.classList.add('btn', 'btn-outline-primary', 'm-2', 'date-button');
+                dateButton.textContent = new Date(date).toLocaleDateString();
+                dateButton.value = date;
+  
+                // Add click event to date button
+                dateButton.addEventListener('click', () => {
+                  dateInput.value = dateButton.value;
+  
+                  // Clear the existing time slots
+                  timeSlotSelectionDiv.innerHTML = '';
+  
+                  // Open the time slots accordion
+                  const timeCollapse = new bootstrap.Collapse('#collapseTime', {
+                    toggle: true
+                  });
+  
+                  // Populate the time slots for the selected date
+                  data.timeSlots.forEach(slot => {
+                    if (slot.date === dateButton.value) {
+                      const timeButton = document.createElement('button');
+                      timeButton.classList.add('btn', 'btn-outline-primary', 'm-2');
+                      timeButton.textContent = slot.time;
+                      timeButton.value = slot.time;
+                      timeButton.disabled = slot.isBooked; // Disable booked slots
+  
+                      // Add click event to time button
+                      timeButton.addEventListener('click', () => {
+                        timeInput.value = timeButton.value;
+                      });
+  
+                      timeSlotSelectionDiv.appendChild(timeButton);
+                    }
+                  });
+                });
+  
+                dateSelectionDiv.appendChild(dateButton);
+              });
+            }
+          });
+  
+        // Show the modal for booking
+        const modal = new bootstrap.Modal(document.getElementById('bookAppointmentModal'));
+        modal.show();
+      });
+    });
+  
+    // Validate form submission to ensure date and time are selected
+    bookAppointmentForm.addEventListener('submit', (e) => {
+      if (!dateInput.value || !timeInput.value) {
+        e.preventDefault();
+        alert('Please select both a date and a time slot before confirming your appointment.');
+      }
+    });
+  });
+      </script>
+</body>
+
+</html>
