@@ -1,13 +1,21 @@
-# MediLocate
+<h1 align="center">Medilocate</h1>
+
+<p align="center">
+  <img src="banner.png" alt="Medilocate Banner" />
+</p>
+
+<p align="center">
+  <i>A MERN-stack app for booking and locating medical services with live filtering and role-based access.</i>
+</p>
+
 
 **ENSE 374 – Software Engineering Management**  
 **MediLocate**  
 
 **Team Members:**  
-- **Ansar Ahmed** (200470692)  
-- **Gursharan Singh** (200480626)  
+- **Ansar Ahmed**  @ansarahmed789
+- **Gursharan Singh**  
 
-![MediLocate Logo](https://github.com/ansarahmed789/ENSE-374-Project/raw/main/public/images/logo.png)
 
 ---
 
