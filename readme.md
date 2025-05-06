@@ -4,8 +4,8 @@
 **MediLocate**  
 
 **Team Members:**  
-- **Ansar Ahmed** (200470692)  
-- **Gursharan Singh** (200480626)  
+- **Ansar Ahmed**@ansarahmed789
+- **Gursharan Singh** 
 
 ![MediLocate Logo](https://github.com/ansarahmed789/ENSE-374-Project/raw/main/public/images/logo.png)
 
