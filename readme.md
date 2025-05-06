@@ -13,8 +13,8 @@
 **MediLocate**  
 
 **Team Members:**  
-- **Ansar Ahmed**  @ansarahmed789
-- **Gursharan Singh**  
+- **Ansar Ahmed** (200470692)  
+- **Gursharan Singh** (200480626)  
 
 
 ---
